@@ -70,39 +70,49 @@ void helper(){
 }
 
 int main(){
+    int res;
     int ch;
     Train* list = NULL;
     Train* el;
     helper();
     do{
         printf("Введите число: ");
-        scanf("%d",&ch);
-        switch (ch)
-        {
-        case 1:{/*Добавить*/
-            el = makeRecord();
-            if(el!=NULL)list = addElement(list, el);
-            else printf("\nНекорректный ввод\n");            
-        }
-            break;
-        case 2:/*Изменить*/
+        res = scanf("%d",&ch);
+        if(res==EOF)perror("Error EOF ");
+        else if (res!=1)perror("Error EOF ");
+        else if(ch>=0&&ch<=9)
+            switch (ch)
+            {
+                case 1:{/*Добавить*/
+                    el = makeRecord();
+                    if(el!=NULL)list = addElement(list, el);
+                    else printf("\nНекорректный ввод\n");            
+                }
+                    break;
+                case 2:/*Изменить*/
+                    if(listSize(list)>0) list = changeElement(list);
+                    else printf("Список пустой\n");
+                    break;
+                case 3:/*Удалить*/
+                    if(listSize(list)>0)list = deleteElement(list);
+                    else printf("Список пустой\n");
+                    break;
+                case 4:/*Вывести всё*/
+                    if(listSize(list)>0)showAll(list);
+                    else printf("Список пустой\n");
+                    break;
+                case 5: /*Подсказка*/
+                    helper();
+                    break;
+                case 0: /*Выход*/
+                    free(list);
+                    break;    
+                default:
+                    printf("\nВведено неправильное число\n");
+                    break;
+            }
+        else ch = 0;
 
-            break;
-        case 3:/*Удалить*/
-            list = deleteElement(list);
-            break;
-        case 4:/*Вывести всё*/
-            showAll(list);
-            break;
-        case 5: /*Подсказка*/
-            helper();
-            break;
-        case 0: /*Выход*/
-            break;    
-        default:
-            printf("\nВведено неправильное число\n");
-            break;
-        }    
     }while(ch!=0);
     
     return 0;

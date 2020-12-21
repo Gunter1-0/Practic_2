@@ -7,8 +7,8 @@ typedef struct Train Train;
   {
       long index;
       char station[4096];
-      long trainNumber;
-      int countOfCar;
+      char trainNumber[4096];
+      char countOfCar[4096];
       char trainType[4096];
       char destination[4096];
       struct Train * next;    

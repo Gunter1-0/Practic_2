@@ -24,5 +24,8 @@ struct Train
     void showAll(Train* list);
     //Удаляет элемент списка
     Train* deleteElement(Train* list);
-    
+    //Изменяет элементы
+    Train* changeElement(Train* list);
+    //
+    int listSize(Train* list);
 #endif

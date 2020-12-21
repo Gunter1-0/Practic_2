@@ -7,8 +7,8 @@ typedef struct Train Train;
   {
     long index;
     char station[4096];
-    long trainNumber;
-    int countOfCar;
+    char trainNumber[4096];
+    char countOfCar[4096];
     char trainType[4096];
     char destination[4096];
     struct Train * next;    
@@ -110,14 +110,14 @@ Train* indexed(Train* list);
     return list;
   }
   //Создание нового элемента
-  Train*createTrain(char station[4096], long trainNumber,int countOfCar,char trainType[4096],char destination[4096])
+  Train*createTrain(char station[4096], char trainNumber[4096],char countOfCar[4096],char trainType[4096],char destination[4096])
   {
     Train*tr = allocate();
     strcpy(tr->station,station); 
     strcpy(tr->trainType,trainType); 
     strcpy(tr->destination,destination); 
-    tr->trainNumber=trainNumber; 
-    tr->countOfCar = countOfCar; 
+    strcpy(tr->trainNumber,trainNumber); 
+    strcpy(tr->countOfCar, countOfCar); 
     return tr; 
   }
   //Переиндексация

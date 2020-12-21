@@ -22,8 +22,8 @@ Train* makeRecord(){
     Train *t = allocate();              //Возвращаемый элемент
     t->next = NULL;                     //Заполнение указателя
     char stationName[4096];             //Название станции
-    long trainNumber;                   //Номер поезда
-    int countOfCars;                    //Количество вагонов
+    char trainNumber[4096];             //Номер поезда
+    char countOfCars[4096];             //Количество вагонов
     char trainType[4096];               //Тип поезда
     char destination[4096];             //Пункт назначения
     int res1, res2, res3, res4, res5;   //Коды ошибок/успеха
@@ -32,10 +32,10 @@ Train* makeRecord(){
     res1 = scanf("%s", stationName);
     
     printf("Введите номер поезда: ");
-    res2 = scanf("%ld", &trainNumber);
+    res2 = scanf("%s", trainNumber);
     
     printf("Введите количество вагонов: ");
-    res3 = scanf("%d", &countOfCars);
+    res3 = scanf("%s", countOfCars);
     
     printf("Введите тип поезда: ");
     res4 =scanf("%s", trainType);
@@ -55,8 +55,8 @@ Train* makeRecord(){
     }
     else{
         strcpy(t->station, stationName);
-        t->trainNumber = trainNumber;
-        t->countOfCar=countOfCars;
+        strcpy(t->trainNumber, trainNumber);
+        strcpy(t->countOfCar, countOfCars);
         strcpy(t->trainType, trainType);
         strcpy(t->destination, destination);
     }
@@ -73,8 +73,8 @@ void showAll(Train* list){
     {
         printf("%ld. ", list->index+1);
         printf("%s ", list->station);
-        printf("%ld ", list->trainNumber);
-        printf("%d ", list->countOfCar);
+        printf("%s ", list->trainNumber);
+        printf("%s ", list->countOfCar);
         printf("%s ", list->trainType);
         printf("%s\n", list->destination);
         list = list->next;
@@ -94,3 +94,36 @@ void showAll(Train* list){
         
         return list;
     }
+//
+//Изменяет элементы
+    Train* changeElement(Train* list){
+        int res;
+        int ch;
+        int c = count(list);
+        printf("Введите номер: ");
+        res = scanf("%d",&ch);
+        if(res == EOF)perror("\nError EOF: \n");
+        else if(res!=1) perror("\nError: res!= 1\n");
+        else if(ch>c||ch<1){
+            printf("Такого элемента нет!\n");    
+            return list;
+        }
+        else {
+            Train*newEl = makeRecord();
+            if(newEl!=NULL){
+                Train*el = goHere(list, ch-1);
+                strcpy(el->station, newEl->station);
+                strcpy(el->trainNumber, newEl->trainNumber);
+                strcpy(el->countOfCar, newEl->countOfCar);
+                strcpy(el->trainType, newEl->trainType);
+                strcpy(el->destination, newEl->destination);
+                free(newEl);
+            }
+            else printf("Ошибка ввода\n");
+                 
+        }
+
+        return list;
+    }
+
+int listSize(Train* list){return count(list);}
