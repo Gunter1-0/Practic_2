@@ -9,6 +9,5 @@
 //     bool chekLongNumberSize(char *str[]);
 //     //Проверяет размер строки числом типа int
 //     bool chekIntNumberSize(char *str[]);
-//     //Считает длину строки
-//     int sizeOfString(char number[4096]);
+
 #endif

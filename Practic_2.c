@@ -59,6 +59,8 @@
 #include"Trains.h"
 #include"RManager.h"
 #include"ChekData.h"
+#include"CheckSize.h"
+#include"CheckCountElements.h"
 
 void helper(){
     printf("1. Добаить \n");
@@ -105,6 +107,15 @@ int main(){
                 case 5: /*Подсказка*/
                     helper();
                     break;
+                case 6: /*длина строки*/
+                    if(count(list)>0) printf("Длина строки: %d\n", sizeOfString(list->station));
+                    else printf("Список пустой\n");
+                    break;
+                case 7: /*длина строки*/
+                    if(count(list)>0) printf("Количество элементов списка: %ld\n", countOfElements(list));
+                    else printf("Список пустой\n");
+                    break;
+                    
                 case 0: /*Выход*/
                     free(list);
                     break;    
