@@ -1,19 +1,19 @@
-#ifndef _ADD_H
-#define _ADD_H
+#ifndef _RMANAGER_H
+#define _RMANAGER_H
 #include<stddef.h>
 #include<stdio.h>
-
-typedef struct Train Train;
-struct Train
-{
-    long index;
-    char station[4096];
-    long trainNumber;
-    int countOfCar;
-    char trainType[4096];
-    char destination[4096];
-    struct Train * next;    
-};
+#include"Trains.h"
+// typedef struct Train Train;
+// struct Train
+// {
+//     long index;
+//     char station[4096];
+//     long trainNumber;
+//     int countOfCar;
+//     char trainType[4096];
+//     char destination[4096];
+//     struct Train * next;    
+// };
     //Считывает ввод с клавиатуры и
     //создаёт новую ячейку списка 
     Train* makeRecord();
@@ -29,3 +29,4 @@ struct Train
     //
     int listSize(Train* list);
 #endif
+

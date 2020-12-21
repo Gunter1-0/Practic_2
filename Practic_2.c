@@ -52,13 +52,13 @@
 //makeRecord() Считывает ввод с клавиатуры и создаёт новую ячейку списка 
 //
 //
-#include"RManager.h"
-#include"ChekData.h"
 #include<stddef.h>
 #include<stdio.h>
 #include<string.h>
 #include<stdlib.h>
 #include"Trains.h"
+#include"RManager.h"
+#include"ChekData.h"
 
 void helper(){
     printf("1. Добаить \n");
@@ -75,6 +75,7 @@ int main(){
     Train* list = NULL;
     Train* el;
     helper();
+    
     do{
         printf("Введите число: ");
         res = scanf("%d",&ch);
@@ -98,7 +99,7 @@ int main(){
                     else printf("Список пустой\n");
                     break;
                 case 4:/*Вывести всё*/
-                    if(listSize(list)>0)showAll(list);
+                    if(count(list)>0)showAll(list);
                     else printf("Список пустой\n");
                     break;
                 case 5: /*Подсказка*/

@@ -1,5 +1,5 @@
-#ifndef _ADD_H
-#define _ADD_H
+#ifndef _TRAINS_H
+#define _TRAINS_H
 ///Поля: вокзал, номер поезда, количество вагонов, тип (экспресс/обычный/спутник),
 ///станция назначения.
 typedef struct Train Train;
@@ -27,8 +27,8 @@ typedef struct Train Train;
   long count(Train* list);
   //Удалет элемент в позиции n из списка list 
   Train*deleteAt(Train* list, long i);
-  //Добавляет элемент в позицию n
-  Train*insertTo(Train* el, Train* list, long i);
+  // //Добавляет элемент в позицию n
+  // Train*insertTo(Train* el, Train* list, long i);
   //Создание нового элемента
   Train*createTrain(
                     char station[4096], 

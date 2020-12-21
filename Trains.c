@@ -23,8 +23,8 @@ Train* indexed(Train* list);
   }
   //Перемещает каретку на последний элемент списка
   Train* goToEnd(Train* list){
-    if(list!=NULL) return list;
-    if(list->next!=NULL) return list;
+    if(list==NULL) return list;
+    if(list->next==NULL) return list;
     while (list->next!=NULL) list = list->next;    
     return list;
   }
@@ -90,25 +90,25 @@ Train* indexed(Train* list);
     return list;
   }
 
-  //Добавляет элемент в позицию n
-  Train*insertTo(Train* el, Train* list, long i){
-    Train* el2;
-    if(i<count(list)-1&&i>0){
-      el2 = goHere(list, i-1);
-      Train* el3 = el2->next;
-      el2->next = el;
-      el2->next->next = el3;
-    }
-    else if(i == 0){
-      el->next = list;
-      list = el;    
-    }
-    else if(i==count(list)-1)goToEnd(list)->next = el;
-    else{
-      perror("\nОшибка при добавлении элемента в указанную позицию!\n");
-    }
-    return list;
-  }
+//   //Добавляет элемент в позицию n
+//   Train*insertTo(Train* el, Train* list, long i){
+//     Train* el2;
+//     if(i<count(list)-1&&i>0){
+//       el2 = goHere(list, i-1);
+//       Train* el3 = el2->next;
+//       el2->next = el;
+//       el2->next->next = el3;
+//     }
+//     else if(i == 0){
+//       el->next = list;
+//       list = el;    
+//     }
+//     else if(i==count(list)-1)goToEnd(list)->next = el;
+//     else{
+//       perror("\nОшибка при добавлении элемента в указанную позицию!\n");
+//     }
+//     return list;
+//   }
   //Создание нового элемента
   Train*createTrain(char station[4096], char trainNumber[4096],char countOfCar[4096],char trainType[4096],char destination[4096])
   {
@@ -120,7 +120,7 @@ Train* indexed(Train* list);
     strcpy(tr->countOfCar, countOfCar); 
     return tr; 
   }
-  //Переиндексация
+  //Переиндексацияe
   Train* indexed(Train* list){
     Train* l = list;
     int i = 0;
