@@ -17,7 +17,7 @@ libCheckCountElements.so: CheckCountElements.o
 			gcc -fPIC -shared -olibCheckCountElements.so CheckCountElements.o
 
 UnitTests.o: UnitTests.c Trains.h RManager.h ChekData.h
-			gcc -c UnityTests.c
+			gcc -c UnitTests.c
 UnitTests: UnitTests.o Practic_2
 			gcc -oUnitTests UnitTests.o Practic_2.o Unity/src/unity.c
 runtests:	UnitTests
